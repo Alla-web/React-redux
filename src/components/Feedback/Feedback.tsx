@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import Button from "../Button/Button"
 import {
   FeedbackContainerStyled,
   CounterWrapperStyled,
@@ -6,27 +6,37 @@ import {
   Hw4ButtonCounter,
   ResetButtonContainer,
   ResultContainer,
-} from "./styles";
-
-import { useState } from "react";
+} from "./styles"
+//9. Импортируем хуки для диспатча и получения данных (селекторов)
+import { useAppDispatch, useAppSelector } from 'store/hooks'
+// Импортируем экшены и селекторы, которые были созданы и экспортированы в файле feedbackSlice.ts
+import {
+  feedbackActions,
+  feedbackSelectors,
+} from "store/redux/feedBack/feedBackSlice"
 
 function Feedback() {
-  const [likes, setLikes] = useState<number>(0);
-  const [dislikes, setDislikes] = useState<number>(0);
-  console.log("rerendering");
+  // 11. Забираем значеня из store
+  // const feedbackData = useAppSelector(feedbackSelectors.feedbackData)
+  // console.log(feedbackData)
 
-  const onLikeClick = (): void => {
-    setLikes((prevState) => prevState + 1);
-  };
+  //или сразу деструктуризируем полученный стейт
+  const { likes, dislikes } = useAppSelector(feedbackSelectors.feedbackData)
 
-  const onDislikeClick = (): void => {
-    setDislikes((prevState) => prevState + 1);
-  };
+  //12. Отправляем данные - получаем функцию dispatch, которую возвращает хук useDispatch
+  const dispatch = useAppDispatch()
 
-  const onResetClick = (): void => {
-    setLikes(0);
-    setDislikes(0);
-  };
+  const addLike = ()=>{
+    dispatch(feedbackActions.addLike())
+  }
+
+const addDislake = ()=>{
+  dispatch(feedbackActions.addDislike())
+}
+
+const resetFeedbacks = ()=> {
+  dispatch(feedbackActions.resetFeedbacks())
+}
 
   return (
     <FeedbackContainerStyled>
@@ -34,19 +44,19 @@ function Feedback() {
         <ContainerStyled>
           <ResultContainer>{likes}</ResultContainer>
           <Hw4ButtonCounter>
-            <Button name="Like" type="button" onClick={onLikeClick} />
+            <Button name="Like" type="button" onClick={addLike} />
           </Hw4ButtonCounter>
         </ContainerStyled>
         <ContainerStyled>
           <ResultContainer>{dislikes}</ResultContainer>
           <Hw4ButtonCounter>
-            <Button name="Dislike" type="button" onClick={onDislikeClick} />
+            <Button name="Dislike" type="button" onClick={addDislake} />
           </Hw4ButtonCounter>
         </ContainerStyled>
       </CounterWrapperStyled>
-      <Button name="RESET RESULTS" type="button" onClick={onResetClick} />
+      <Button name="RESET RESULTS" type="button" onClick={resetFeedbacks} />
     </FeedbackContainerStyled>
-  );
+  )
 }
 
-export default Feedback;
+export default Feedback

@@ -5,14 +5,15 @@ export const CounterContainerStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  max-width: 400px;
+  min-width: 400px;
   padding: 20px;
   background-color: aliceblue;
-  border-radius: 4px;
   border: 2px solid rgb(146, 158, 247);
+  border-radius: 4px;
 `;
 
-export const ButtonContainerStyled = styled.button`
+
+export const ButtonContainerStyled = styled.div`
   width: 100px;
 `;
 

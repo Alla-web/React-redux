@@ -10,8 +10,8 @@ export const FeedbackContainerStyled = styled.div`
   align-items: center;
   gap: 40px;
   background-color: rgb(254, 254, 150);
-  /* border-radius: 8px;
-  border: 2px solid rgb(166, 175, 184); */
+  border-radius: 8px;
+  border: 2px solid rgb(166, 175, 184); 
 `;
 
 export const CounterWrapperStyled = styled.div`

@@ -8,7 +8,7 @@ interface ButtonStyledProps {
 export const MainButton = styled.button<ButtonStyledProps>`
   width: 100%;
   min-height: 70px;
-  padding: 20px 54px;
+  padding: 20px;
   background-color: ${({disabled, $isRed})=>disabled ? 'grey': $isRed ? 'red' : '#1f27f5'};
   color: white;
   border: none;
@@ -16,4 +16,5 @@ export const MainButton = styled.button<ButtonStyledProps>`
   font-size: 20px;
   font-weight: 600;
   cursor: ${({disabled})=>disabled? "not-allowed" : "pointer"};
+  text-align: center;
 `;
