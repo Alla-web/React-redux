@@ -16,7 +16,7 @@ export const ButtonContainer = styled.div`
 width: 100%;
 `
 
-export const ResultsContainer = styled.p`
+export const ResultsContainer = styled.ul`
 width: 100%;
 min-height: 300px;
 max-height: fit-content;
@@ -25,4 +25,13 @@ border: 2px solid #6da9f3;
 border-radius: 8px;
 font-size: 20px;
 color: black;
+`
+
+export const ResultItem = styled.li`
+text-decoration: none;
+`
+
+export const ErrorContainer = styled.p`
+color: red;
+font-size: 24px;
 `

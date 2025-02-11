@@ -1,5 +1,5 @@
 export interface AdviceRandomizerSliceState {
   advices: string[],
-  error: any,
+  error?: string | undefined,
   status: 'default' | 'loading' | 'success' | 'error'
 }

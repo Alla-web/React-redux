@@ -1,6 +1,7 @@
 import { createAppSlice } from "store/createAppSlice"
 import { AdviceRandomizerSliceState } from "./types"
 import axios from "axios"
+import { PayloadAction } from "@reduxjs/toolkit"
 
 const initialAdviceRandomizerState: AdviceRandomizerSliceState = {
   advices: [],
@@ -17,8 +18,8 @@ export const adviceRandomizerSlice = createAppSlice({
       async (arg, thunkApi) => {
         try {
           const result = await axios.get("https://api.adviceslip.com/advice")
-          console.log(result);
-          return result.data
+          //смотрим
+          return result.data.slip.advice
         } catch (error) {
           return thunkApi.rejectWithValue(error)
         }
@@ -27,26 +28,25 @@ export const adviceRandomizerSlice = createAppSlice({
         //5. Обрабатываем действия, которые должны происходить, когда произошла отправка запроса,
         // но результат ещё ждем
         pending: (state: AdviceRandomizerSliceState) => {
-            state.status= 'loading'
-            state.error = undefined
+          state.status = "loading"
+          state.error = undefined
         },
         // 6. Обработка успешного результата
         fulfilled: (state: AdviceRandomizerSliceState, action: any) => {
-        state.advices = [
-            ...state.advices, `${action.payload}`
-        ]
-        state.status = 'success'
+          state.advices = [...state.advices, action.payload]
+          state.status = "success"
         },
         // 7. Обработка ошибки
         rejected: (state: AdviceRandomizerSliceState, action: any) => {
-            state.error = action.payload.message
-            state.status = 'error'
+          state.error = action.payload.message
+          state.status = "error"
         },
       },
     ),
+    deleteAdvices: create.reducer(() => initialAdviceRandomizerState),
   }),
   selectors: {
-    adviceData: (state: AdviceRandomizerSliceState)=> state
+    adviceData: (state: AdviceRandomizerSliceState) => state,
   },
 })
 
