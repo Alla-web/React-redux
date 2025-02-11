@@ -59,7 +59,7 @@ function Layout({ children }: LayoutProps) {
             to="/hw17"
           >
             HW 17
-          </StyledNavLink>
+          </StyledNavLink>          
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
@@ -67,6 +67,14 @@ function Layout({ children }: LayoutProps) {
             to="/lesson18"
           >
             Lesson 18
+          </StyledNavLink>
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/hw18"
+          >
+            HW 18
           </StyledNavLink>
         </NavContainer>
       </Header>
@@ -81,6 +89,7 @@ function Layout({ children }: LayoutProps) {
           <StyledLink to="/lesson17">Lesson 17</StyledLink>
           <StyledLink to="/hw17">HW 17</StyledLink>
           <StyledLink to="/lesson18">Lesson 18</StyledLink>
+          <StyledLink to="/hw18">HW 18</StyledLink>
         </FooterNavContainer>
       </Footer>
     </LayoutWrapper>

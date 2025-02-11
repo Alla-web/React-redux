@@ -32,8 +32,9 @@ export const randomJokesSlice = createAppSlice({
         try {
           //можно ссылку для запроса не создавать отдельно, а сразу отправлять в гет
           const result = await axios.get(
-            "https://official-joke-api.appspot.com/random_joke",
-          )
+            "https://official-joke-api.appspot.com/random_joke",          )
+      
+          
           // 3. В случае успешного завершения запроса, возвращаются полученняе данные для того, чтобы
           // получить их в обработчике fulfilled (т.к. только редьюсеры имеют право изменять state)
           return result.data

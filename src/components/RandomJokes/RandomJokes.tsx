@@ -26,7 +26,7 @@ function RandomJokes() {
 
   const dispatch = useAppDispatch()
 
-  //отправляем данные useAppDispatch
+  //отправляем данные использованием useAppDispatch
   const getJoke = () => {
     dispatch(randomJokesActions.getJoke())
   }
